@@ -4,34 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Keogh Advisory Group, LLC</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:    #0D1B2A;
-      --navy-mid:#122033;
-      --brass:   #A08C5B;
-      --brass-lt:#C4A96D;
-      --off-white:#F6F4F0;
-      --warm-gray:#EDEBE6;
-      --text:    #1C1C1C;
-      --muted:   #6B6660;
-      --rule:    rgba(160,140,91,0.35);
+      --navy:      #1B2E4B;
+      --navy-dark: #131f33;
+      --gold:      #C9A84C;
+      --gold-lt:   #dfc078;
+      --off-white: #F4F6F9;
+      --warm-gray: #E8EAF0;
+      --text:      #1C1C1C;
+      --muted:     #5A5F6B;
+      --rule:      rgba(201,168,76,0.35);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
       color: var(--text);
       background: var(--off-white);
       font-size: 16px;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: Georgia, 'Times New Roman', serif;
     }
 
     /* ── NAV ───────────────────────────────────────────── */
@@ -44,16 +45,15 @@
       justify-content: space-between;
       padding: 0 48px;
       height: 64px;
-      background: rgba(13,27,42,0.97);
+      background: rgba(27,46,75,0.98);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(160,140,91,0.18);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
     }
 
     .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: 15px;
-      letter-spacing: 0.18em;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #fff;
       text-decoration: none;
@@ -61,21 +61,38 @@
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 32px;
       list-style: none;
     }
 
     .nav-links a {
       font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.2em;
+      font-weight: 400;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.6);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--brass-lt); }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+    }
 
     /* ── HERO ──────────────────────────────────────────── */
     #hero {
@@ -95,27 +112,24 @@
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 60%, rgba(160,140,91,0.07) 0%, transparent 70%),
-        repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.018) 80px),
-        repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.018) 80px);
+      background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(201,168,76,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-rule {
       width: 48px;
       height: 1px;
-      background: var(--brass);
+      background: var(--gold);
       margin: 0 auto 32px;
       opacity: 0;
       animation: fadeUp 0.8s 0.2s forwards;
     }
 
     .hero-wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(32px, 5vw, 52px);
-      letter-spacing: 0.22em;
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(28px, 4.5vw, 48px);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #fff;
       line-height: 1.1;
@@ -124,12 +138,11 @@
     }
 
     .hero-llc {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
+      font-family: Georgia, serif;
       font-style: italic;
       font-size: 13px;
-      letter-spacing: 0.25em;
-      color: var(--brass);
+      letter-spacing: 0.2em;
+      color: var(--gold);
       margin-top: 10px;
       opacity: 0;
       animation: fadeUp 0.9s 0.5s forwards;
@@ -137,31 +150,28 @@
 
     .hero-divider {
       width: 1px;
-      height: 40px;
+      height: 36px;
       background: var(--rule);
-      margin: 28px auto;
+      margin: 24px auto;
       opacity: 0;
       animation: fadeUp 0.9s 0.65s forwards;
     }
 
     .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(15px, 2.2vw, 20px);
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.06em;
+      font-family: Georgia, serif;
+      font-size: clamp(14px, 2vw, 18px);
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.05em;
       max-width: 760px;
-      line-height: 1.5;
+      line-height: 1.6;
       opacity: 0;
       animation: fadeUp 0.9s 0.8s forwards;
     }
 
     .hero-sub {
-      max-width: 580px;
+      max-width: 600px;
       font-size: 14px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.48);
-      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
       margin-top: 20px;
       line-height: 1.8;
       opacity: 0;
@@ -170,21 +180,19 @@
 
     .hero-pillars {
       display: flex;
-      gap: 0;
       margin-top: 40px;
-      border: 1px solid rgba(160,140,91,0.25);
+      border: 1px solid rgba(201,168,76,0.3);
       opacity: 0;
       animation: fadeUp 0.9s 1.05s forwards;
     }
 
     .hero-pillar {
-      padding: 10px 24px;
+      padding: 10px 28px;
       font-size: 9px;
-      font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--brass);
-      border-right: 1px solid rgba(160,140,91,0.25);
+      color: var(--gold);
+      border-right: 1px solid rgba(201,168,76,0.3);
     }
 
     .hero-pillar:last-child { border-right: none; }
@@ -193,11 +201,10 @@
       margin-top: 32px;
       display: inline-block;
       padding: 13px 36px;
-      border: 1px solid var(--brass);
-      color: var(--brass-lt);
+      border: 1px solid var(--gold);
+      color: var(--gold-lt);
       font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       transition: background 0.25s, color 0.25s;
@@ -205,100 +212,101 @@
       animation: fadeUp 0.9s 1.2s forwards;
     }
 
-    .hero-cta:hover {
-      background: var(--brass);
-      color: var(--navy);
-    }
+    .hero-cta:hover { background: var(--gold); color: var(--navy); }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── SHARED SECTION STYLES ─────────────────────────── */
+    /* ── SHARED ────────────────────────────────────────── */
     section { padding: 96px 48px; }
 
     .section-label {
       font-size: 9px;
-      font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 20px;
+      color: var(--gold);
+      margin-bottom: 16px;
     }
 
     .section-heading {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, serif;
+      font-size: clamp(24px, 3vw, 36px);
       font-weight: 400;
-      font-size: clamp(26px, 3.5vw, 38px);
       line-height: 1.2;
-      letter-spacing: 0.01em;
       color: var(--navy);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .section-rule {
       width: 36px;
       height: 1px;
-      background: var(--brass);
+      background: var(--gold);
       margin-bottom: 36px;
     }
+
+    .inner { max-width: 960px; margin: 0 auto; }
 
     /* ── SERVICES ──────────────────────────────────────── */
     #services { background: var(--warm-gray); }
 
-    .services-inner {
-      max-width: 960px;
-      margin: 0 auto;
+    .services-intro {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.85;
+      margin-bottom: 52px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2px;
-      margin-top: 48px;
-      border: 1px solid rgba(160,140,91,0.2);
-    }
-
-    .service-card {
-      padding: 40px 36px;
+    .service-block {
+      border-left: 2px solid var(--gold);
+      padding: 36px 40px;
       background: var(--off-white);
-      border: 1px solid rgba(160,140,91,0.12);
+      margin-bottom: 3px;
       transition: background 0.2s;
     }
 
-    .service-card:hover { background: #fff; }
+    .service-block:hover { background: #fff; }
+
+    .service-block:last-child { margin-bottom: 0; }
 
     .service-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      color: var(--brass);
+      font-size: 10px;
       letter-spacing: 0.2em;
-      margin-bottom: 18px;
+      color: var(--gold);
+      margin-bottom: 10px;
     }
 
     .service-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
+      font-family: Georgia, serif;
       font-size: 20px;
+      font-weight: 400;
       color: var(--navy);
       margin-bottom: 14px;
       line-height: 1.2;
     }
 
     .service-body {
-      font-size: 13.5px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .service-detail {
+      font-size: 13px;
       color: var(--muted);
       line-height: 1.8;
-      font-weight: 300;
+      padding-left: 16px;
+      border-left: 1px solid var(--rule);
+      font-style: italic;
     }
 
     /* ── ABOUT ─────────────────────────────────────────── */
     #about { background: var(--off-white); }
 
     .about-inner {
-      max-width: 960px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 80px;
@@ -312,7 +320,6 @@
       color: #3a3835;
       line-height: 1.9;
       margin-bottom: 22px;
-      font-weight: 300;
     }
 
     .about-body p:last-child { margin-bottom: 0; }
@@ -320,27 +327,27 @@
     .about-distinction {
       margin-top: 32px;
       padding: 28px 32px;
-      border-left: 2px solid var(--brass);
+      border-left: 2px solid var(--gold);
       background: var(--warm-gray);
     }
 
     .about-distinction p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-family: Georgia, serif;
+      font-size: 17px;
       font-style: italic;
       color: var(--navy);
-      line-height: 1.5;
+      line-height: 1.55;
       margin-bottom: 14px !important;
     }
 
     .about-distinction p:last-child { margin-bottom: 0 !important; }
 
     .about-closing {
-      margin-top: 36px;
-      padding-top: 28px;
+      margin-top: 32px;
+      padding-top: 24px;
       border-top: 1px solid var(--rule);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
+      font-family: Georgia, serif;
+      font-size: 16px;
       font-style: italic;
       color: var(--navy);
     }
@@ -349,12 +356,6 @@
     #experience { background: var(--navy); }
 
     #experience .section-heading { color: #fff; }
-    #experience .section-label   { color: var(--brass); }
-
-    .experience-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
 
     .exp-grid {
       display: grid;
@@ -365,26 +366,24 @@
 
     .exp-group-title {
       font-size: 9px;
-      font-weight: 500;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--brass);
-      margin-bottom: 20px;
+      color: var(--gold);
+      margin-bottom: 18px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(160,140,91,0.25);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
     }
 
     .exp-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 13px;
     }
 
     .exp-list li {
       font-size: 13.5px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.62);
       line-height: 1.7;
       padding-left: 14px;
       position: relative;
@@ -394,7 +393,7 @@
       content: '—';
       position: absolute;
       left: 0;
-      color: var(--brass);
+      color: var(--gold);
       font-size: 10px;
       top: 2px;
     }
@@ -403,8 +402,6 @@
     #special { background: var(--warm-gray); }
 
     .special-inner {
-      max-width: 960px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 80px;
@@ -418,7 +415,6 @@
       color: #3a3835;
       line-height: 1.9;
       margin-bottom: 22px;
-      font-weight: 300;
     }
 
     .special-body p:last-child { margin-bottom: 0; }
@@ -434,64 +430,57 @@
 
     .special-tag {
       font-size: 9px;
-      font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--brass);
-      border: 1px solid rgba(160,140,91,0.35);
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
       padding: 6px 14px;
     }
 
     /* ── CONTACT ───────────────────────────────────────── */
     #contact {
-      background: var(--navy-mid);
-      border-top: 1px solid rgba(160,140,91,0.2);
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(201,168,76,0.2);
       text-align: center;
     }
 
     #contact .section-heading { color: #fff; }
     #contact .section-rule { margin: 0 auto 36px; }
 
-    .contact-inner {
-      max-width: 580px;
-      margin: 0 auto;
-    }
+    .contact-inner { max-width: 580px; margin: 0 auto; }
 
     .contact-intro {
       font-size: 14px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.52);
       line-height: 1.85;
       margin-bottom: 44px;
     }
 
     .contact-block {
-      border: 1px solid rgba(160,140,91,0.25);
+      border: 1px solid rgba(201,168,76,0.25);
       padding: 40px 48px;
       margin-bottom: 36px;
     }
 
     .contact-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: Georgia, serif;
       font-size: 22px;
-      font-weight: 400;
       color: #fff;
       letter-spacing: 0.04em;
       margin-bottom: 6px;
     }
 
     .contact-firm {
-      font-size: 11px;
-      font-weight: 400;
+      font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--brass);
+      color: var(--gold);
       margin-bottom: 20px;
     }
 
     .contact-location {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.32);
       letter-spacing: 0.1em;
       margin-bottom: 28px;
     }
@@ -499,31 +488,27 @@
     .contact-email {
       display: inline-block;
       padding: 12px 32px;
-      border: 1px solid var(--brass);
-      color: var(--brass-lt);
+      border: 1px solid var(--gold);
+      color: var(--gold-lt);
       font-size: 10px;
-      font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       transition: background 0.22s, color 0.22s;
     }
 
-    .contact-email:hover {
-      background: var(--brass);
-      color: var(--navy);
-    }
+    .contact-email:hover { background: var(--gold); color: var(--navy); }
 
     .contact-note {
       font-size: 11px;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.25);
       line-height: 1.7;
     }
 
     /* ── FOOTER ────────────────────────────────────────── */
     footer {
       background: var(--navy);
-      border-top: 1px solid rgba(160,140,91,0.12);
+      border-top: 1px solid rgba(201,168,76,0.1);
       padding: 28px 48px;
       display: flex;
       align-items: center;
@@ -534,35 +519,16 @@
 
     .footer-copy {
       font-size: 11px;
-      color: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.2);
       letter-spacing: 0.06em;
     }
 
     .footer-disclaimer {
       font-size: 10px;
-      color: rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.16);
       max-width: 480px;
       text-align: right;
       line-height: 1.6;
-    }
-
-    /* ── HAMBURGER / MOBILE NAV ────────────────────────── */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 1px;
-      background: rgba(255,255,255,0.6);
-      transition: 0.2s;
     }
 
     /* ── RESPONSIVE ────────────────────────────────────── */
@@ -576,7 +542,7 @@
         background: var(--navy);
         flex-direction: column;
         gap: 0;
-        border-top: 1px solid rgba(160,140,91,0.18);
+        border-top: 1px solid rgba(201,168,76,0.18);
       }
 
       .nav-links.open { display: flex; }
@@ -590,28 +556,19 @@
       .nav-toggle { display: flex; }
 
       section { padding: 72px 24px; }
-
       #hero { padding: 100px 24px 72px; }
 
-      .hero-pillars {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
+      .hero-pillars { flex-wrap: wrap; }
       .hero-pillar {
         border-right: none;
-        border-bottom: 1px solid rgba(160,140,91,0.25);
-        width: 100%;
+        border-bottom: 1px solid rgba(201,168,76,0.25);
+        flex: 1 1 100%;
         text-align: center;
       }
-
       .hero-pillar:last-child { border-bottom: none; }
 
       .about-inner,
-      .special-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      .special-inner { grid-template-columns: 1fr; gap: 40px; }
 
       .about-left,
       .special-left { position: static; }
@@ -620,13 +577,10 @@
 
       .contact-block { padding: 32px 24px; }
 
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 24px;
-      }
-
+      footer { flex-direction: column; align-items: flex-start; padding: 24px; }
       .footer-disclaimer { text-align: left; }
+
+      .service-block { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -653,11 +607,11 @@
     <div class="hero-wordmark">Keogh Advisory Group</div>
     <div class="hero-llc">— LLC —</div>
     <div class="hero-divider"></div>
-    <div class="hero-tagline">Strategic Advisory&nbsp;&nbsp;·&nbsp;&nbsp;Operational Leadership&nbsp;&nbsp;·&nbsp;&nbsp;Fiduciary Services&nbsp;&nbsp;·&nbsp;&nbsp;Court-Appointed Receiverships</div>
+    <div class="hero-tagline">Strategic Advisory &nbsp;·&nbsp; Operational Leadership &nbsp;·&nbsp; Fiduciary Services &nbsp;·&nbsp; Asset Management</div>
     <div class="hero-sub">
       A Massachusetts-based firm providing senior operational leadership,<br>
-      independent fiduciary oversight, and advisory services to businesses,<br>
-      lenders, investors, counsel, and other stakeholders navigating complexity and transition.
+      independent fiduciary oversight, and advisory services to lenders,<br>
+      investors, counsel, and stakeholders navigating complexity and transition.
     </div>
     <div class="hero-pillars">
       <div class="hero-pillar">Operator</div>
@@ -669,67 +623,64 @@
 
   <!-- SERVICES -->
   <section id="services">
-    <div class="services-inner">
+    <div class="inner">
       <div class="section-label">Scope of Engagements</div>
       <div class="section-heading">How We Engage</div>
       <div class="section-rule"></div>
-      <div class="services-grid">
+      <p class="services-intro">Keogh Advisory Group accepts engagements where operational complexity, regulatory exposure, or stakeholder dynamics require experienced, independent leadership. The firm operates across three related service lines, each grounded in direct operating experience rather than advisory distance.</p>
 
-        <div class="service-card">
-          <div class="service-number">01</div>
-          <div class="service-title">Strategic Advisory</div>
-          <div class="service-body">Capital strategy, market positioning, regulatory navigation, and stakeholder management for businesses in regulated or capital-intensive industries. Advice grounded in direct operating experience.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">02</div>
-          <div class="service-title">Operational Leadership</div>
-          <div class="service-body">Hands-on executive engagement for organizations that need experienced leadership in the seat — not advisory distance. Available as interim CEO, President, or COO for transitional, distressed, or complex situations.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">03</div>
-          <div class="service-title">Fiduciary Services</div>
-          <div class="service-body">Independent fiduciary oversight, asset preservation, stakeholder alignment, and transitional leadership for lender-directed, board-directed, and investor-directed engagements requiring accountable, independent leadership.</div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-number">04</div>
-          <div class="service-title">Court-Appointed Receiverships</div>
-          <div class="service-body">Independent fiduciary oversight, operational stabilization, regulatory compliance, stakeholder management, asset preservation, and transition leadership for distressed businesses and court-supervised matters.</div>
-        </div>
-
+      <div class="service-block">
+        <div class="service-number">01</div>
+        <div class="service-title">Interim Executive &amp; Operational Advisory</div>
+        <div class="service-body">Interim CEO and COO engagements, operational assessments, and advisory support for regulated businesses navigating leadership transitions, performance challenges, or complex stakeholder environments. Available for project-based deployment or sustained interim roles.</div>
+        <div class="service-detail">Engagements may be structured on behalf of a lender, board, investor group, or directly with the operating company. All engagements are principal-led.</div>
       </div>
+
+      <div class="service-block">
+        <div class="service-number">02</div>
+        <div class="service-title">Asset Management for Licensed &amp; Previously Licensed Facilities</div>
+        <div class="service-body">Physical oversight, systems management, regulatory continuity, and government affairs for cannabis facilities that are vacant, transitioning ownership, or in disposition. This is not general property management. It requires direct familiarity with CCC license continuity, Host Community Agreements, provisional license renewals, and municipal relationships — and the ability to maintain those while keeping carrying costs minimized.</div>
+        <div class="service-detail">Keogh Advisory Group can serve as the operational point of contact for lenders, receivers, or owners managing licensed assets through a transition period — preserving license value and regulatory standing while disposition or ownership transfer proceeds.</div>
+      </div>
+
+      <div class="service-block">
+        <div class="service-number">03</div>
+        <div class="service-title">Fiduciary &amp; Special Situations</div>
+        <div class="service-body">Independent fiduciary oversight, operational stabilization, regulatory compliance, stakeholder management, and asset preservation for businesses navigating complex transitions, lender-directed situations, or stakeholder-driven environments.</div>
+        <div class="service-detail">Engagements are evaluated on a matter-by-matter basis. Conflicts are assessed prior to any substantive engagement.</div>
+      </div>
+
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="about-inner">
-      <div class="about-left">
-        <div class="section-label">About</div>
-        <div class="section-heading">Principal&#8209;Led.<br>Operationally<br>Grounded.</div>
-        <div class="section-rule"></div>
-      </div>
-      <div class="about-body">
-        <p>Keogh Advisory Group is a Massachusetts-based firm led by Timothy Keogh, an entrepreneur, CEO, and operator with more than two decades of experience building, operating, and advising businesses in regulated and capital-intensive industries, including cannabis cultivation, manufacturing and retail operations, real estate development, marina and waterfront development, and marine operations.</p>
-        <p>Tim has built and led companies, raised capital through debt and equity markets, and managed complex stakeholder relationships with lenders, investors, regulators, and municipalities. His operating background includes licensed cannabis cultivation, manufacturing and retail operations, cannabis licensing and regulatory compliance, public company leadership, facility development, optimization of building operations, marina and waterfront operations, and direct engagement on lender workouts, distressed assets, and complex stakeholder situations.</p>
-        <div class="about-distinction">
-          <p>He has run businesses — not just advised them.</p>
-          <p>Unlike many advisors, receivers, and restructuring professionals, Tim's experience comes from direct responsibility for operations, capital formation, regulatory compliance, development, and stakeholder management.</p>
+    <div class="inner">
+      <div class="about-inner">
+        <div class="about-left">
+          <div class="section-label">About</div>
+          <div class="section-heading">Principal&#8209;Led.<br>Operationally<br>Grounded.</div>
+          <div class="section-rule"></div>
         </div>
-        <div class="about-closing">Every engagement is principal-led. Tim Keogh is directly involved in every matter.</div>
+        <div class="about-body">
+          <p>Keogh Advisory Group is a Massachusetts-based firm led by Timothy Keogh, an entrepreneur, CEO, and operator with more than two decades of experience building, operating, and advising businesses in regulated and capital-intensive industries, including cannabis cultivation, manufacturing and retail operations, real estate development, marina and waterfront development, and marine operations.</p>
+          <p>Tim has built and led companies, raised capital through debt and equity markets, and managed complex stakeholder relationships with lenders, investors, regulators, and municipalities. His operating background includes licensed cannabis cultivation, manufacturing and retail operations, cannabis licensing and regulatory compliance under the Massachusetts Cannabis Control Commission, public company leadership, facility development, optimization of building operations, marina and waterfront operations, and direct engagement on lender workouts, distressed assets, and complex stakeholder situations.</p>
+          <div class="about-distinction">
+            <p>He has run businesses — not just advised them.</p>
+            <p>Unlike many advisors, receivers, and restructuring professionals, Tim's experience comes from direct responsibility for operations, capital formation, regulatory compliance, development, and stakeholder management.</p>
+          </div>
+          <div class="about-closing">Every engagement is principal-led. Tim Keogh is directly involved in every matter.</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="experience-inner">
+    <div class="inner">
       <div class="section-label">Representative Experience</div>
-      <div class="section-heading">Background &amp; Credentials</div>
-      <div class="section-rule" style="background:var(--brass);"></div>
-
+      <div class="section-heading" style="color:#fff;">Background &amp; Credentials</div>
+      <div class="section-rule"></div>
       <div class="exp-grid">
 
         <div>
@@ -752,14 +703,13 @@
             <li>Experience working with lenders, investors, landlords, and other stakeholders in distressed and transitional situations</li>
             <li>Experience negotiating with lenders, landlords, regulators, investors, contractors, and other stakeholders in complex operating environments</li>
             <li>Capital structure assessment and going-concern analysis in distressed situations</li>
-            <li>Stakeholder alignment and fiduciary oversight in complex multi-party environments</li>
           </ul>
         </div>
 
         <div>
           <div class="exp-group-title">Regulatory &amp; Compliance</div>
           <ul class="exp-list">
-            <li>Cannabis licensing and regulatory compliance under the Massachusetts Cannabis Control Commission and other state frameworks</li>
+            <li>Cannabis licensing and regulatory compliance under the Massachusetts Cannabis Control Commission, including license continuity, Host Community Agreements, and provisional license renewals</li>
             <li>Licensing and compliance management across multiple regulated industries and jurisdictions</li>
             <li>Direct interface with municipal licensing authorities, state agencies, and regulatory bodies</li>
             <li>Government affairs and agency relationship management</li>
@@ -773,26 +723,27 @@
 
   <!-- SPECIAL SITUATIONS -->
   <section id="special">
-    <div class="special-inner">
-      <div class="special-left">
-        <div class="section-label">Special Situations &amp; Receiverships</div>
-        <div class="section-heading">Independent<br>Oversight for<br>Complex Matters</div>
-        <div class="section-rule"></div>
-      </div>
-      <div class="special-body">
-        <p>Keogh Advisory Group is available to serve as a court-appointed receiver, fiduciary, interim executive, or operational advisor in situations requiring independent oversight, regulatory expertise, operational stabilization, stakeholder management, or asset preservation.</p>
-        <p>The firm brings hands-on experience operating regulated businesses, managing lender and investor relationships, navigating complex regulatory environments, and leading organizations through periods of transition and financial distress. This is not advisory distance — it is direct operational accountability delivered by a principal who has held executive responsibility across multiple industries and complex situations.</p>
-        <p>Keogh Advisory Group is available to assist courts, counsel, lenders, boards, investors, and businesses when a situation requires independent leadership, operational stabilization, stakeholder management, regulatory expertise, or fiduciary oversight.</p>
-        <div class="special-tags">
-          <span class="special-tag">Receiverships</span>
-          <span class="special-tag">Independent Fiduciary</span>
-          <span class="special-tag">Interim Executive</span>
-          <span class="special-tag">Asset Preservation</span>
-          <span class="special-tag">Operational Stabilization</span>
-          <span class="special-tag">Lender Workout</span>
-          <span class="special-tag">Distressed Assets</span>
-          <span class="special-tag">Regulatory Compliance</span>
-          <span class="special-tag">Stakeholder Alignment</span>
+    <div class="inner">
+      <div class="special-inner">
+        <div class="special-left">
+          <div class="section-label">Special Situations &amp; Fiduciary</div>
+          <div class="section-heading">Independent<br>Oversight for<br>Complex Matters</div>
+          <div class="section-rule"></div>
+        </div>
+        <div class="special-body">
+          <p>Keogh Advisory Group is available to serve as an independent fiduciary, interim executive, or operational advisor in situations requiring independent oversight, regulatory expertise, operational stabilization, stakeholder management, or asset preservation.</p>
+          <p>The firm brings hands-on experience operating regulated businesses, managing lender and investor relationships, navigating complex regulatory environments, and leading organizations through periods of transition and financial stress. This is not advisory distance — it is direct operational accountability delivered by a principal who has held executive responsibility across multiple industries and complex situations.</p>
+          <p>Keogh Advisory Group is available to assist counsel, lenders, boards, investors, and businesses when a situation requires independent leadership, operational stabilization, stakeholder management, regulatory expertise, or fiduciary oversight.</p>
+          <div class="special-tags">
+            <span class="special-tag">Independent Fiduciary</span>
+            <span class="special-tag">Interim Executive</span>
+            <span class="special-tag">Asset Preservation</span>
+            <span class="special-tag">Operational Stabilization</span>
+            <span class="special-tag">Lender Advisory</span>
+            <span class="special-tag">License Continuity</span>
+            <span class="special-tag">Regulatory Compliance</span>
+            <span class="special-tag">Stakeholder Alignment</span>
+          </div>
         </div>
       </div>
     </div>
@@ -805,7 +756,7 @@
       <div class="section-heading">Independent Leadership for Complex Situations</div>
       <div class="section-rule"></div>
       <div class="contact-intro">
-        Keogh Advisory Group accepts inquiries from attorneys, lenders, investors, boards, businesses, and other stakeholders seeking independent operational leadership, interim executive services, fiduciary oversight, or assistance with complex situations. Engagements are evaluated on a matter-by-matter basis. Conflicts are assessed prior to any substantive engagement.
+        Keogh Advisory Group accepts inquiries from attorneys, lenders, investors, boards, businesses, and other stakeholders seeking independent operational leadership, interim executive services, fiduciary oversight, asset management for licensed facilities, or assistance with complex situations. Engagements are evaluated on a matter-by-matter basis. Conflicts are assessed prior to any substantive engagement.
       </div>
       <div class="contact-block">
         <div class="contact-name">Timothy Keogh</div>
